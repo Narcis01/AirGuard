@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2 ">
+    <div class="input-group d-flex justify-content-start">
+        <button class="btn btn-outline-light buttonNav " routerLink="/charts">Back</button>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a class="navbar-brand title " href="#">Miele - environment quality </a>
+    </div>
+</nav>
+<div class="m-4 row justify-content-center">
+    <ul class="list-group col-5">
+        <li class="list-group-item" *ngFor="let TempAddress of addresses">
+            <div class="d-flex justify-content-between">
+                <div class="align-self-center p-2 bd-highlight">
+                    {{TempAddress.location}} - {{TempAddress.room}}
+                </div>
+                <div>
+                    <button type="button" class="btn btn-danger ms-4"
+                        (click)="deleteAddress(TempAddress._id)">X</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <form (ngSubmit)="onSubmit()" class="col-5 mt-5 ">
+        <div class="form-area">
+            <h3>Create a new address</h3>
+
+            <div class="row m-2">
+                <div class="col-md-2"> <label>Location</label></div>
+                <div class="col-md-9">
+                    <input [(ngModel)]="location" name="username" class="form-control" type="text">
+                </div>
+            </div>
+
+            <div class="row m-2">
+                <div class="col-md-2"> <label>Room</label></div>
+                <div class="col-md-9">
+                    <input [(ngModel)]="room" name="password" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+</div>

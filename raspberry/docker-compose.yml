@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  frontend:
+    image: naical01/frontend-image
+    ports:
+      - "80:80"
+  backend:
+    image: naical01/backend
+    ports:
+      - "3000:3000"
+  raspberry:
+    image: naical01/raspberry-python
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    privileged: true
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+

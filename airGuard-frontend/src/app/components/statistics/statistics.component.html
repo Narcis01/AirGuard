@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2 ">
+    <div class="input-group d-flex justify-content-start">
+        <button class="btn btn-outline-light buttonNav " routerLink="/charts">Back</button>
+        <div class="dropdown ms-4">
+            <button class="btn btn-outline-light dropdown-toggle" type="button" id="addressDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">Address</button>
+            <ul class="dropdown-menu" aria-labelledby="addressDropdown">
+                <li *ngFor="let TempAddress of address">
+                    <a class="dropdown-item" (click)="selectAddress(TempAddress)"> {{TempAddress.location}} {{TempAddress.room}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a class="navbar-brand title " href="#">Miele - environment quality in {{this.selectedAddress.location}} - {{this.selectedAddress.room}}</a>
+    </div>
+
+</nav>
+<div>
+    <div class="dropdown">
+        <div class="d-flex justify-content-center title-small m-2">Stats for year {{yearSelected}}</div>
+        <div class="d-flex justify-content-center m-2">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuDark"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Select the year
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuDark">
+                <li><a class="dropdown-item" (click)="selectYear(2024)">2024</a></li>
+                <li><a class="dropdown-item" (click)="selectYear(2023)">2023</a></li>
+                <li><a class="dropdown-item" (click)="selectYear(2022)">2022</a></li>
+                <li><a class="dropdown-item" (click)="selectYear(2021)">2021</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center p-5">
+        <ul class="list-group">
+            <li class="list-group-item p-4">The average hydrogen was: {{avCo2 | number: '1.2-2'}} </li>
+            <li class="list-group-item p-4">The average temperature was: {{avTemp | number: '1.2-2'}}</li>
+            <li class="list-group-item p-4">The average dust was: {{avDust | number: '1.2-2'}} </li>
+            <li class="list-group-item p-4">The average light intensity was: {{avLight | number: '1.2-2'}} </li>
+            <li class="list-group-item p-4">The average humidity was: {{avHumidity | number: '1.2-2'}} </li>
+
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+FROM arm32v7/python:3.12-slim
+
+WORKDIR /app
+
+COPY . /app
+
+RUN apt-get update \
+    && apt-get install -y gcc make i2c-tools \
+    && rm -rf /var/lib/apt/lists/* 
+
+RUN pip install adafruit-circuitpython-ads1x15 \
+    && pip install adafruit-blinka \
+    && pip install adafruit-circuitpython-htu21d \
+    && pip install RPi.GPIO \
+    && pip install sht20 \
+    && pip install smbus2 \
+    && pip install requests
+EXPOSE 80
+
+CMD ["python3", "airguard.py"]
